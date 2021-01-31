@@ -1,9 +1,10 @@
-package com.frontanilla.dual.screens.game.stuff;
+package com.frontanilla.dual.screens.game.stuff.robot;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import static com.frontanilla.dual.Constants.PLATFORM_Y;
+import static com.frontanilla.dual.Constants.ROBOT_X;
 
 public class Robot {
 
@@ -11,14 +12,10 @@ public class Robot {
 
     public Robot(Sprite robotSprite) {
         robot = new Sprite(robotSprite);
-        robot.setY(PLATFORM_Y);
+        robot.setPosition(ROBOT_X, PLATFORM_Y);
     }
 
     public void draw(SpriteBatch spriteBatch) {
         robot.draw(spriteBatch);
-    }
-
-    public void setX(int x) {
-        robot.setX(x);
     }
 }

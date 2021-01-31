@@ -8,31 +8,52 @@ import com.frontanilla.dual.screens.shared.structure.Screen;
 
 public class GameLogic extends Logic {
 
+    private final EnemyHandler enemyHandler;
+    private final FoodHandler foodHandler;
     private final GameInputHandler gameInputHandler;
     private final NatureHandler natureHandler;
     private final RobotHandler robotHandler;
+    private final RocketHandler rocketHandler;
+    private final SnakeHandler snakeHandler;
 
     public GameLogic() {
+        enemyHandler = new EnemyHandler();
+        foodHandler = new FoodHandler();
         gameInputHandler = new GameInputHandler();
         natureHandler = new NatureHandler();
         robotHandler = new RobotHandler();
+        rocketHandler = new RocketHandler();
+        snakeHandler = new SnakeHandler();
+
+        gameInputHandler.setLogic(this);
+        rocketHandler.setLogic(this);
+        snakeHandler.setLogic(this);
     }
 
     public void initialLogic() {
+        foodHandler.configureFood();
         gameInputHandler.configureInput();
         natureHandler.configureNature();
         robotHandler.configureRobot();
+        snakeHandler.configureSnake();
     }
 
     @Override
     public void update(float delta) {
+        enemyHandler.update(delta);
+        foodHandler.update(delta);
         natureHandler.update(delta);
-        robotHandler.update(delta);
+        rocketHandler.update(delta);
+        snakeHandler.update(delta);
     }
 
+    // Structure
     public void setAssets(Assets assets) {
+        foodHandler.setAssets(assets);
         natureHandler.setAssets(assets);
         robotHandler.setAssets(assets);
+        rocketHandler.setAssets(assets);
+        snakeHandler.setAssets(assets);
     }
 
     public void setInput(Input input) {
@@ -44,7 +65,23 @@ public class GameLogic extends Logic {
     }
 
     public void setStuff(GameStuff stuff) {
+        foodHandler.setStuff(stuff);
         natureHandler.setStuff(stuff);
         robotHandler.setStuff(stuff);
+        rocketHandler.setStuff(stuff);
+        snakeHandler.setStuff(stuff);
+    }
+
+    // Helpers
+    public RobotHandler getRobotHandler() {
+        return robotHandler;
+    }
+
+    public RocketHandler getRocketHandler() {
+        return rocketHandler;
+    }
+
+    public SnakeHandler getSnakeHandler() {
+        return snakeHandler;
     }
 }

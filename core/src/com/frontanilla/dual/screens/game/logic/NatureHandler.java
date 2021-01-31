@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.frontanilla.dual.screens.game.stuff.GameStuff;
 import com.frontanilla.dual.screens.shared.structure.Assets;
 
+import static com.badlogic.gdx.graphics.Color.FOREST;
+import static com.badlogic.gdx.graphics.Color.ORANGE;
 import static com.frontanilla.dual.Constants.CAMERA_WIDTH;
 import static com.frontanilla.dual.Constants.FRAME_THICKNESS;
 import static com.frontanilla.dual.Constants.GROUND_TILES;
@@ -26,10 +28,14 @@ public class NatureHandler {
         time = 0f;
         spawnInterval = MathUtils.random(MIN_NATURE_SPAWN_INTERVAL, MAX_NATURE_SPAWN_INTERVAL);
         generateGround();
+
+        Sprite bush = new Sprite(assets.getBush());
+        bush.setPosition(CAMERA_WIDTH / 2f, PLATFORM_Y);
+        stuff.getRobotPanel().getBackgroundNature().add(bush);
     }
 
     private void generateGround() {
-        DelayedRemovalArray<Sprite> groundTiles = stuff.getPlatformerPanel().getGroundTiles();
+        DelayedRemovalArray<Sprite> groundTiles = stuff.getRobotPanel().getGroundTiles();
         for (int i = 0; i < GROUND_TILES; i++) {
             Sprite groundTile = new Sprite(assets.getGroundTile());
             groundTile.setPosition(FRAME_THICKNESS + GROUND_TILE_WIDTH * i, FRAME_THICKNESS);
@@ -55,32 +61,36 @@ public class NatureHandler {
     private void spawnRandomNature() {
         Sprite bush = new Sprite(assets.getBush());
         bush.setPosition(CAMERA_WIDTH, PLATFORM_Y);
+        bush.setOrigin(0f, 0f);
+        bush.setScale(MathUtils.random(0.25f, 1f));
+        bush.setColor(FOREST.cpy().lerp(ORANGE, MathUtils.random(0f, 1f)));
+        bush.flip(MathUtils.randomBoolean(), false);
 
         boolean background = MathUtils.randomBoolean();
         if (background) {
-            stuff.getPlatformerPanel().getBackgroundNature().add(bush);
+            stuff.getRobotPanel().getBackgroundNature().add(bush);
         } else {
-            stuff.getPlatformerPanel().getForegroundNature().add(bush);
+            stuff.getRobotPanel().getForegroundNature().add(bush);
         }
     }
 
     private void moveNature(float delta) {
-        DelayedRemovalArray<Sprite> natureArray = stuff.getPlatformerPanel().getGroundTiles();
+        DelayedRemovalArray<Sprite> natureArray = stuff.getRobotPanel().getGroundTiles();
         for (int i = 0; i < natureArray.size; i++) {
             natureArray.get(i).translateX(-NATURE_SPEED * delta);
         }
-        natureArray = stuff.getPlatformerPanel().getBackgroundNature();
+        natureArray = stuff.getRobotPanel().getBackgroundNature();
         for (int i = 0; i < natureArray.size; i++) {
             natureArray.get(i).translateX(-NATURE_SPEED * delta);
         }
-        natureArray = stuff.getPlatformerPanel().getForegroundNature();
+        natureArray = stuff.getRobotPanel().getForegroundNature();
         for (int i = 0; i < natureArray.size; i++) {
             natureArray.get(i).translateX(-NATURE_SPEED * delta);
         }
     }
 
     private void checkNatureVisibility() {
-        DelayedRemovalArray<Sprite> natureArray = stuff.getPlatformerPanel().getGroundTiles();
+        DelayedRemovalArray<Sprite> natureArray = stuff.getRobotPanel().getGroundTiles();
         natureArray.begin();
         for (int i = 0; i < natureArray.size; i++) {
             if (natureArray.get(i).getX() < -natureArray.get(i).getWidth()) {
@@ -92,7 +102,7 @@ public class NatureHandler {
             }
         }
         natureArray.end();
-        natureArray = stuff.getPlatformerPanel().getBackgroundNature();
+        natureArray = stuff.getRobotPanel().getBackgroundNature();
         natureArray.begin();
         for (int i = 0; i < natureArray.size; i++) {
             if (natureArray.get(i).getX() < -natureArray.get(i).getWidth()) {
@@ -100,7 +110,7 @@ public class NatureHandler {
             }
         }
         natureArray.end();
-        natureArray = stuff.getPlatformerPanel().getForegroundNature();
+        natureArray = stuff.getRobotPanel().getForegroundNature();
         natureArray.begin();
         for (int i = 0; i < natureArray.size; i++) {
             if (natureArray.get(i).getX() < -natureArray.get(i).getWidth()) {

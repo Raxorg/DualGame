@@ -7,6 +7,4 @@ public abstract class InputHandler {
     public abstract void touchUp(float x, float y);
 
     public abstract void keyDown(int keycode);
-
-    public abstract void keyUp(int keycode);
 }

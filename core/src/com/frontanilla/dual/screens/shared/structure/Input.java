@@ -46,15 +46,6 @@ public class Input extends InputAdapter {
         return true;
     }
 
-    @Override
-    public boolean keyUp(int keycode) {
-        if (!enabled) {
-            return false;
-        }
-        inputHandler.keyUp(keycode);
-        return true;
-    }
-
     public void setInputHandler(InputHandler inputHandler) {
         this.inputHandler = inputHandler;
     }

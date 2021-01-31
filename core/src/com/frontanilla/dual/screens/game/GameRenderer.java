@@ -30,7 +30,7 @@ public class GameRenderer extends Renderer {
         // Draw stuff
         spriteBatch.begin();
         stuff.getSnakePanel().draw(spriteBatch);
-        stuff.getPlatformerPanel().draw(spriteBatch);
+        stuff.getRobotPanel().draw(spriteBatch);
         spriteBatch.end();
     }
 
