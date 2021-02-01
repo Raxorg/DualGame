@@ -3,6 +3,7 @@ package com.frontanilla.dual.screens.splash.logic;
 import com.frontanilla.dual.screens.shared.structure.Assets;
 import com.frontanilla.dual.screens.shared.structure.Logic;
 import com.frontanilla.dual.screens.shared.structure.Screen;
+import com.frontanilla.dual.screens.splash.SplashStuff;
 
 public class SplashLogic extends Logic {
 
@@ -33,6 +34,10 @@ public class SplashLogic extends Logic {
 
     public void setScreen(Screen screen) {
         transitionHandler.setScreen(screen);
+    }
+
+    public void setStuff(SplashStuff stuff) {
+        transitionHandler.setStuff(stuff);
     }
 
     public TransitionHandler getTransitionHandler() {

@@ -12,7 +12,7 @@ import static com.frontanilla.dual.Constants.TOON_SKY;
 public class GameRenderer extends Renderer {
 
     private Screen screen;
-    private com.frontanilla.dual.screens.game.stuff.GameStuff stuff;
+    private GameStuff stuff;
     // Renderer
     private final SpriteBatch spriteBatch;
 
@@ -31,6 +31,7 @@ public class GameRenderer extends Renderer {
         spriteBatch.begin();
         stuff.getSnakePanel().draw(spriteBatch);
         stuff.getRobotPanel().draw(spriteBatch);
+        stuff.getScore().draw(spriteBatch);
         spriteBatch.end();
     }
 

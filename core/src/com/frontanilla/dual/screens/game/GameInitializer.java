@@ -8,8 +8,7 @@ import com.frontanilla.dual.screens.shared.structure.Screen;
 
 public class GameInitializer {
 
-    public void initialize(Assets assets, Screen screen) {
-        Input input = new Input();
+    public void initialize(Assets assets, Input input, Screen screen) {
         GameLogic logic = new GameLogic();
         GameRenderer renderer = new GameRenderer();
         GameStuff stuff = new GameStuff();

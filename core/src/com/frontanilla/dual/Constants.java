@@ -10,17 +10,41 @@ public class Constants {
     public static final Color LIGHT_GRASS = new Color(0xb6d53cff);
     public static final Color DARK_DIRT = new Color(0xeea160ff);
     public static final Color NICE_BLUE = new Color(0x0064ffff);
+    public static final Color HALF_CLEAR = new Color(1, 1, 1, 0.5f);
     // Camera
     public static final int CAMERA_HEIGHT = 800;
     public static final int CAMERA_WIDTH = 1200;
+    //--------
+    // Splash
+    //--------
+    private static final int LOGO_WIDTH = 512;
+    private static final int LOGO_HEIGHT = 459;
+    public static final int LOGO_X = CAMERA_WIDTH / 2 - LOGO_WIDTH / 2;
+    public static final int LOGO_Y = CAMERA_HEIGHT / 2 - LOGO_HEIGHT / 2;
+    public static final int SPLASH_TEXT_SCALE = 4;
+    public static final int SPLASH_TEXT_HEIGHT = 9 * SPLASH_TEXT_SCALE;
+    public static final int SPLASH_TEXT_X = CAMERA_WIDTH / 2;
+    public static final int SPLASH_TEXT_Y = LOGO_Y - SPLASH_TEXT_HEIGHT;
+    public static final float SPLASH_MINIMUM_DURATION = 4f;
+    //------
+    // Menu
+    //------
+    public static final int BUTTON_SIZE = 200;
+    public static final int PLAY_BUTTON_X = CAMERA_WIDTH / 2 - BUTTON_SIZE / 2;
+    public static final int PLAY_BUTTON_Y = (CAMERA_HEIGHT / 4) * 3 - BUTTON_SIZE / 2;
+    public static final int TUTORIAL_BUTTON_X = CAMERA_WIDTH / 3 - BUTTON_SIZE / 2;
+    public static final int TUTORIAL_BUTTON_Y = CAMERA_HEIGHT / 4 - BUTTON_SIZE / 2;
+    public static final int CREDITS_BUTTON_X = (CAMERA_WIDTH / 3) * 2 - BUTTON_SIZE / 2;
+    public static final int CREDITS_BUTTON_Y = CAMERA_HEIGHT / 4 - BUTTON_SIZE / 2;
+    //--------
+    // Shared
+    //--------
     // Frames
     public static final int FRAME_THICKNESS = 10;
     public static final int FRAME_WIDTH = CAMERA_WIDTH;
     public static final int FRAME_HEIGHT = CAMERA_HEIGHT / 2 + FRAME_THICKNESS / 2;
     public static final int INNER_FRAME_HEIGHT = FRAME_HEIGHT - FRAME_THICKNESS * 2;
-    //--------
-    // Shared
-    //--------
+
     public static final int FULLNESS_UNIT = 32;
     public static final int FULL_BAR = FULLNESS_UNIT * 6;
     //-------------
@@ -36,10 +60,10 @@ public class Constants {
     public static final int GRID_X = CAMERA_WIDTH / 2 - GRID_WIDTH / 2;
     public static final int GRID_Y = FRAME_HEIGHT + INNER_FRAME_HEIGHT / 2 - GRID_HEIGHT / 2;
     // Food
-    public static final float FOOD_SPAWN_INTERVAL = 10f;
-    public static final int APPLES_PER_SPAWN = 4;
-    public static final int SCREWS_PER_SPAWN = 2;
-    public static final int BAD_APPLES_PER_SPAWN = 10;
+    public static final int FOOD_SPAWN_INTERVAL = 10;
+    public static final int APPLES_PER_SPAWN = 6;
+    public static final int SCREWS_PER_SPAWN = 4;
+    public static final int BAD_APPLES_PER_SPAWN = 12;
     public static final int APPLE_HEALING = FULLNESS_UNIT / 2;
     public static final int BAD_APPLE_DAMAGE = FULLNESS_UNIT / 2;
     public static final int CANNIBALISM_DAMAGE = FULLNESS_UNIT / 4;
@@ -79,5 +103,6 @@ public class Constants {
     public static final int ROCKET_Y = ROBOT_Y + ROBOT_WEAPON_ALTITUDE - ROCKET_HEIGHT / 2;
     public static final int ROCKET_SPEED = 600;
     // Enemies
-    public static final float ENEMY_SPAWN_INTERVAL = 5f;
+    public static final int ENEMY_SPEED = 400;
+    public static final int ENEMY_DAMAGE = FULLNESS_UNIT * 2;
 }

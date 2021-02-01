@@ -11,17 +11,18 @@ public class Assets {
 
     private final AssetManager assetManager;
     // Audio
-    private Music backgroundMusic;  // todo
-    private Sound motor;
+    private Music backgroundMusic;
+    private Sound motor, rocketLaunch;
     // Fonts
     private BitmapFont pixelFont;
     // Sprites
     private Sprite pixel;
+    private Sprite playButton, tutorialButton, creditsButton, menuGround, tutorial, credits;
     private Sprite apple, screw, badApple;
     private Sprite snakeHead, snakeBody;
     private Sprite groundTile, bush;
     private Sprite barTopLayer, heart, rocket;
-    private Sprite robot, firedRocket;
+    private Sprite robot, enemy, firedRocket;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -29,12 +30,20 @@ public class Assets {
 
     public void queueAssetLoading() {
         // Audio
-
+        assetManager.load("audio/odyssey.mp3", Music.class);
         assetManager.load("audio/motor1.wav", Sound.class);
+        assetManager.load("audio/rocketLaunch.mp3", Sound.class);
         // Fonts
         assetManager.load("fonts/pixelFont.fnt", BitmapFont.class);
         // Sprites
         assetManager.load("images/pixel.png", Texture.class);
+
+        assetManager.load("images/playButton.png", Texture.class);
+        assetManager.load("images/tutorialButton.png", Texture.class);
+        assetManager.load("images/creditsButton.png", Texture.class);
+        assetManager.load("images/menuGround.png", Texture.class);
+        assetManager.load("images/tutorial.png", Texture.class);
+        assetManager.load("images/credits.png", Texture.class);
 
         assetManager.load("images/apple.png", Texture.class);
         assetManager.load("images/screw.png", Texture.class);
@@ -51,6 +60,7 @@ public class Assets {
         assetManager.load("images/rocket.png", Texture.class);
 
         assetManager.load("images/robot.png", Texture.class);
+        assetManager.load("images/enemy.png", Texture.class);
         assetManager.load("images/firedRocket.png", Texture.class);
     }
 
@@ -60,11 +70,20 @@ public class Assets {
 
     public void initializeAssets() {
         // Audio
+        backgroundMusic = assetManager.get("audio/odyssey.mp3", Music.class);
         motor = assetManager.get("audio/motor1.wav", Sound.class);
+        rocketLaunch = assetManager.get("audio/rocketLaunch.mp3", Sound.class);
         // Fonts
         pixelFont = assetManager.get("fonts/pixelFont.fnt", BitmapFont.class);
         // Sprites
         pixel = new Sprite(assetManager.get("images/pixel.png", Texture.class));
+
+        playButton = new Sprite(assetManager.get("images/playButton.png", Texture.class));
+        tutorialButton = new Sprite(assetManager.get("images/tutorialButton.png", Texture.class));
+        creditsButton = new Sprite(assetManager.get("images/creditsButton.png", Texture.class));
+        menuGround = new Sprite(assetManager.get("images/menuGround.png", Texture.class));
+        tutorial = new Sprite(assetManager.get("images/tutorial.png", Texture.class));
+        credits = new Sprite(assetManager.get("images/credits.png", Texture.class));
 
         apple = new Sprite(assetManager.get("images/apple.png", Texture.class));
         screw = new Sprite(assetManager.get("images/screw.png", Texture.class));
@@ -83,12 +102,22 @@ public class Assets {
 
         robot = new Sprite(assetManager.get("images/robot.png", Texture.class));
         robot.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        enemy = new Sprite(assetManager.get("images/enemy.png", Texture.class));
+        enemy.getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         firedRocket = new Sprite(assetManager.get("images/firedRocket.png", Texture.class));
     }
 
     // Audio
+    public Music getBackgroundMusic() {
+        return backgroundMusic;
+    }
+
     public Sound getMotor() {
         return motor;
+    }
+
+    public Sound getRocketLaunch() {
+        return rocketLaunch;
     }
 
     // Fonts
@@ -99,6 +128,30 @@ public class Assets {
     // Sprites
     public Sprite getPixel() {
         return pixel;
+    }
+
+    public Sprite getPlayButton() {
+        return playButton;
+    }
+
+    public Sprite getTutorialButton() {
+        return tutorialButton;
+    }
+
+    public Sprite getCreditsButton() {
+        return creditsButton;
+    }
+
+    public Sprite getMenuGround() {
+        return menuGround;
+    }
+
+    public Sprite getTutorial() {
+        return tutorial;
+    }
+
+    public Sprite getCredits() {
+        return credits;
     }
 
     public Sprite getApple() {
@@ -143,6 +196,10 @@ public class Assets {
 
     public Sprite getRobot() {
         return robot;
+    }
+
+    public Sprite getEnemy() {
+        return enemy;
     }
 
     public Sprite getFiredRocket() {

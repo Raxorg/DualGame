@@ -8,6 +8,7 @@ import com.frontanilla.dual.screens.shared.structure.Screen;
 
 public class GameLogic extends Logic {
 
+    private final CollisionHandler collisionHandler;
     private final EnemyHandler enemyHandler;
     private final FoodHandler foodHandler;
     private final GameInputHandler gameInputHandler;
@@ -17,6 +18,7 @@ public class GameLogic extends Logic {
     private final SnakeHandler snakeHandler;
 
     public GameLogic() {
+        collisionHandler = new CollisionHandler();
         enemyHandler = new EnemyHandler();
         foodHandler = new FoodHandler();
         gameInputHandler = new GameInputHandler();
@@ -25,12 +27,14 @@ public class GameLogic extends Logic {
         rocketHandler = new RocketHandler();
         snakeHandler = new SnakeHandler();
 
+        collisionHandler.setLogic(this);
         gameInputHandler.setLogic(this);
         rocketHandler.setLogic(this);
         snakeHandler.setLogic(this);
     }
 
     public void initialLogic() {
+        enemyHandler.configureEnemies();
         foodHandler.configureFood();
         gameInputHandler.configureInput();
         natureHandler.configureNature();
@@ -40,6 +44,7 @@ public class GameLogic extends Logic {
 
     @Override
     public void update(float delta) {
+        collisionHandler.update();
         enemyHandler.update(delta);
         foodHandler.update(delta);
         natureHandler.update(delta);
@@ -49,6 +54,7 @@ public class GameLogic extends Logic {
 
     // Structure
     public void setAssets(Assets assets) {
+        enemyHandler.setAssets(assets);
         foodHandler.setAssets(assets);
         natureHandler.setAssets(assets);
         robotHandler.setAssets(assets);
@@ -65,6 +71,8 @@ public class GameLogic extends Logic {
     }
 
     public void setStuff(GameStuff stuff) {
+        collisionHandler.setStuff(stuff);
+        enemyHandler.setStuff(stuff);
         foodHandler.setStuff(stuff);
         natureHandler.setStuff(stuff);
         robotHandler.setStuff(stuff);

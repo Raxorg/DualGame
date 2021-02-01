@@ -22,6 +22,7 @@ public class RobotPanel {
     private final DelayedRemovalArray<Sprite> backgroundNature, foregroundNature;
     private final RobotBar healthBar, ammoBar;
     private final Robot robot;
+    private final DelayedRemovalArray<Sprite> enemies;
     private final DelayedRemovalArray<Sprite> rockets;
     private final StretchableImage frame;
 
@@ -37,6 +38,8 @@ public class RobotPanel {
         ammoBar.setPosition(AMMO_BAR_X, ROBOT_BAR_Y);
 
         robot = new Robot(assets.getRobot());
+
+        enemies = new DelayedRemovalArray<>();
 
         rockets = new DelayedRemovalArray<>();
 
@@ -56,6 +59,9 @@ public class RobotPanel {
             backgroundNature.get(i).draw(spriteBatch);
         }
         robot.draw(spriteBatch);
+        for (int i = 0; i < enemies.size; i++) {
+            enemies.get(i).draw(spriteBatch);
+        }
         for (int i = 0; i < rockets.size; i++) {
             rockets.get(i).draw(spriteBatch);
         }
@@ -87,6 +93,10 @@ public class RobotPanel {
 
     public Robot getRobot() {
         return robot;
+    }
+
+    public DelayedRemovalArray<Sprite> getEnemies() {
+        return enemies;
     }
 
     public DelayedRemovalArray<Sprite> getRockets() {

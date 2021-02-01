@@ -13,7 +13,7 @@ public class RobotHandler {
     private GameStuff stuff;
 
     public void configureRobot() {
-        assets.getMotor().loop(0.1f);
+        assets.getMotor().loop(0.2f);
         stuff.getRobotPanel().getHealthBar().setFullness(FULL_BAR);
         stuff.getRobotPanel().getAmmoBar().setFullness(FULL_BAR);
     }

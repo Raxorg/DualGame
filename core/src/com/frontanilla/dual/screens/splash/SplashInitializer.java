@@ -12,13 +12,19 @@ public class SplashInitializer {
         SplashLogic logic = new SplashLogic();
         SplashRenderer renderer = new SplashRenderer();
         Screen screen = new Screen();
+        SplashStuff stuff = new SplashStuff();
 
         logic.setAssets(assets);
         logic.setScreen(screen);
+        logic.setStuff(stuff);
+        renderer.setScreen(screen);
+        renderer.setStuff(stuff);
         screen.setLogic(logic);
         screen.setRenderer(renderer);
 
+        stuff.initializeStuff();
         logic.initialLogic();
+
         game.setScreen(screen);
     }
 }
