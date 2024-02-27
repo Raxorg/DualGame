@@ -32,6 +32,7 @@ public class CollisionHandler {
                 if (enemy.getBoundingRectangle().overlaps(rocket.getBoundingRectangle())) {
                     enemies.removeValue(enemy, true);
                     rockets.removeValue(rocket, true);
+                    logic.getScoreHandler().addScore(500);
                     break;
                 }
             }

@@ -158,10 +158,12 @@ public class SnakeHandler {
             case APPLE:
                 growSnake();
                 logic.getRobotHandler().addHealth(APPLE_HEALING);
+                logic.getScoreHandler().addScore(100);
                 break;
             case SCREW:
                 growSnake();
                 logic.getRobotHandler().addRocket();
+                logic.getScoreHandler().addScore(150);
                 break;
             case BAD_APPLE:
                 logic.getRobotHandler().loseHealth(BAD_APPLE_DAMAGE);
@@ -179,7 +181,11 @@ public class SnakeHandler {
         snake.getTail().setNextPart(newPart);
         DelayedRemovalArray<SnakePart> snakeParts = snake.getParts();
         snakeParts.add(newPart);
-        movementInterval = Math.max(movementInterval - 0.05f, 0.1f);
+        speedUp();
+    }
+
+    private void speedUp() {
+        movementInterval = Math.max(movementInterval - 0.025f, 0.1f);
     }
 
     private void eatSnake(SnakePart snakePart) {

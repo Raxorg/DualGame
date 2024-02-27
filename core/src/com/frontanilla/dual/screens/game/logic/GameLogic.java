@@ -15,6 +15,7 @@ public class GameLogic extends Logic {
     private final NatureHandler natureHandler;
     private final RobotHandler robotHandler;
     private final RocketHandler rocketHandler;
+    private final ScoreHandler scoreHandler;
     private final SnakeHandler snakeHandler;
 
     public GameLogic() {
@@ -25,6 +26,7 @@ public class GameLogic extends Logic {
         natureHandler = new NatureHandler();
         robotHandler = new RobotHandler();
         rocketHandler = new RocketHandler();
+        scoreHandler = new ScoreHandler();
         snakeHandler = new SnakeHandler();
 
         collisionHandler.setLogic(this);
@@ -49,6 +51,7 @@ public class GameLogic extends Logic {
         foodHandler.update(delta);
         natureHandler.update(delta);
         rocketHandler.update(delta);
+        scoreHandler.update(delta);
         snakeHandler.update(delta);
     }
 
@@ -77,6 +80,7 @@ public class GameLogic extends Logic {
         natureHandler.setStuff(stuff);
         robotHandler.setStuff(stuff);
         rocketHandler.setStuff(stuff);
+        scoreHandler.setStuff(stuff);
         snakeHandler.setStuff(stuff);
     }
 
@@ -87,6 +91,10 @@ public class GameLogic extends Logic {
 
     public RocketHandler getRocketHandler() {
         return rocketHandler;
+    }
+
+    public ScoreHandler getScoreHandler() {
+        return scoreHandler;
     }
 
     public SnakeHandler getSnakeHandler() {

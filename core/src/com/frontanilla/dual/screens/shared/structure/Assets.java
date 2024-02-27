@@ -75,6 +75,7 @@ public class Assets {
         rocketLaunch = assetManager.get("audio/rocketLaunch.mp3", Sound.class);
         // Fonts
         pixelFont = assetManager.get("fonts/pixelFont.fnt", BitmapFont.class);
+        pixelFont.getData().setScale(5);
         // Sprites
         pixel = new Sprite(assetManager.get("images/pixel.png", Texture.class));
 

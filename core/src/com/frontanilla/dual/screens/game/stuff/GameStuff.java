@@ -5,6 +5,9 @@ import com.frontanilla.dual.screens.game.stuff.snake.SnakePanel;
 import com.frontanilla.dual.screens.shared.gui.Text;
 import com.frontanilla.dual.screens.shared.structure.Assets;
 
+import static com.frontanilla.dual.Constants.SCORE_X;
+import static com.frontanilla.dual.Constants.SCORE_Y;
+
 public class GameStuff {
 
     private Assets assets;
@@ -17,6 +20,8 @@ public class GameStuff {
         snakePanel = new SnakePanel(assets);
         robotPanel = new RobotPanel(assets);
         score = new Text(assets.getPixelFont());
+        score.setPosition(SCORE_X, SCORE_Y);
+        score.setText("0");
     }
 
     public SnakePanel getSnakePanel() {

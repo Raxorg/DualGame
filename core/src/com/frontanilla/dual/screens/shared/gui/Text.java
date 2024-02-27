@@ -34,6 +34,10 @@ public class Text {
         bounds.setSize(width, height);
     }
 
+    public String getText() {
+        return text;
+    }
+
     public void setText(String text) {
         this.text = text;
     }

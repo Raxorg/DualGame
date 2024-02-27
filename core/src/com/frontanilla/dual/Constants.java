@@ -105,4 +105,9 @@ public class Constants {
     // Enemies
     public static final int ENEMY_SPEED = 400;
     public static final int ENEMY_DAMAGE = FULLNESS_UNIT * 2;
+    //-------
+    // Score
+    //-------
+    public static final int SCORE_X = CAMERA_WIDTH / 2;
+    public static final int SCORE_Y = PLATFORM_Y / 2;
 }
